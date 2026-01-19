@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料庫統計工具</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .stats {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .stat-value {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 台股資料庫統計</h1>
+
+        <div class="stats" id="stats">
+            <div class="stat-item">
+                <span class="stat-label">總公司數：</span>
+                <span class="stat-value" id="totalCount">載入中...</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">有詳細描述：</span>
+                <span class="stat-value" id="withDescription">載入中...</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">有量化指標：</span>
+                <span class="stat-value" id="withMetric">載入中...</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">完成度：</span>
+                <span class="stat-value" id="completeness">載入中...</span>
+            </div>
+        </div>
+
+        <button onclick="showDetails()">顯示詳細資訊</button>
+
+        <div id="output" style="display: none;"></div>
+    </div>
+
+    <script>
+        let stocksData = [];
+
+        async function loadData() {
+            try {
+                const response = await fetch('stocks_top100.json');
+                stocksData = await response.json();
+                updateStats();
+            } catch (error) {
+                document.getElementById('totalCount').textContent = '載入失敗';
+                console.error('Error loading data:', error);
+            }
+        }
+
+        function updateStats() {
+            const total = stocksData.length;
+            const withDesc = stocksData.filter(s => s.description && s.description.trim() !== '').length;
+            const withMetric = stocksData.filter(s => s.keyMetric && s.keyMetric.trim() !== '').length;
+            const completeness = Math.round((withDesc / total) * 100);
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('withDescription').textContent = `${withDesc} / ${total}`;
+            document.getElementById('withMetric').textContent = `${withMetric} / ${total}`;
+            document.getElementById('completeness').textContent = `${completeness}%`;
+        }
+
+        function showDetails() {
+            const output = document.getElementById('output');
+            output.style.display = 'block';
+
+            let details = '=== 詳細資料統計 ===\n\n';
+
+            // 產業分布
+            const industries = {};
+            stocksData.forEach(stock => {
+                industries[stock.industry] = (industries[stock.industry] || 0) + 1;
+            });
+
+            details += '【產業分布】\n';
+            Object.entries(industries)
+                .sort((a, b) => b[1] - a[1])
+                .forEach(([industry, count]) => {
+                    details += `${industry}: ${count} 家\n`;
+                });
+
+            details += '\n【缺少描述的公司】\n';
+            const noDesc = stocksData.filter(s => !s.description || s.description.trim() === '');
+            if (noDesc.length === 0) {
+                details += '所有公司都有描述！✓\n';
+            } else {
+                noDesc.forEach(stock => {
+                    details += `${stock.id} ${stock.name} (${stock.industry})\n`;
+                });
+            }
+
+            output.textContent = details;
+        }
+
+        // 載入資料
+        loadData();
+    </script>
+</body>
+
+</html>

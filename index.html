@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台股記憶閃卡 - Stock Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/styles/premium.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header / Dashboard -->
+        <header class="dashboard">
+            <div class="logo">📊 台股記憶閃卡</div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="masteredCount">0</div>
+                    <div class="stat-label">已精通</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="learningCount">0</div>
+                    <div class="stat-label">學習中</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="archivedCount">0</div>
+                    <div class="stat-label">太難 (封存)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="remainingCount">50</div>
+                    <div class="stat-label">待學習</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flashcard-area">
+            <div class="card-wrapper" id="cardWrapper">
+                <div class="flashcard" id="flashcard">
+                    <div class="card-face card-front">
+                        <div class="card-badge">股票代號</div>
+                        <div class="card-company-name" id="stockNameFront">台積電</div>
+                        <div class="card-content" id="stockCode">2330</div>
+                        <div class="card-hint">點擊翻牌查看詳細資訊</div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="stock-name" id="stockName">台積電</div>
+                        <div class="stock-industry" id="stockIndustry">半導體業</div>
+                        <div class="stock-description" id="stockDescription">
+                            先進製程晶圓代工為主，成熟製程為輔
+                        </div>
+                        <div class="stock-metric" id="stockMetric">
+                            先進製程全球市佔 90%+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-archive" id="btnArchive">
+                    <span class="btn-icon">🚫</span>
+                    <span>太難了 / 非能力圈</span>
+                </button>
+                <button class="btn btn-forgot" id="btnForgot">
+                    <span class="btn-icon">❌</span>
+                    <span>忘記了</span>
+                </button>
+                <button class="btn btn-know" id="btnKnow">
+                    <span class="btn-icon">✓</span>
+                    <span>記得</span>
+                </button>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>使用間隔重複系統 (SRS) 幫助記憶 | 建立您的投資能力圈</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/data/stocks_data.js"></script>
+
+    <!-- Premium Features Architecture -->
+    <script src="src/data/stock-data-config.js"></script>
+    <script src="src/logic/content-access.js"></script>
+    <script src="src/logic/ui-components.js"></script>
+
+    <script src="src/logic/srs.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

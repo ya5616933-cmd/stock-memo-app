@@ -1,0 +1,569 @@
+/**
+ * 付費內容相關樣式
+ * 用於模糊效果、鎖定提示、升級模態框等
+ */
+
+/* ========== 內容鎖定與模糊效果 ========== */
+
+.content-locked {
+    position: relative;
+    filter: blur(5px);
+    user-select: none;
+    pointer-events: none;
+}
+
+.content-locked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+}
+
+/* 可解鎖的內容 */
+.unlockable {
+    position: relative;
+    cursor: pointer !important;
+    transition: transform 0.2s;
+}
+
+.unlockable:hover {
+    transform: scale(1.02);
+}
+
+.unlock-hint {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(96, 165, 250, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ========== 鎖定 Badge ========== */
+
+.lock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lock-icon {
+    font-size: 14px;
+}
+
+/* ========== 鎖定覆蓋層 ========== */
+
+.lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+    z-index: 5;
+    animation: fadeIn 0.3s;
+}
+
+.lock-overlay-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.lock-overlay-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.lock-overlay-text {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.lock-overlay-button {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lock-overlay-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ========== 升級提示卡片 ========== */
+
+.upgrade-prompt {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.upgrade-prompt-content {
+    text-align: center;
+}
+
+.upgrade-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.upgrade-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #60a5fa;
+    margin-bottom: 15px;
+}
+
+.upgrade-features {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.upgrade-features li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.upgrade-price {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fbbf24;
+    margin: 20px 0;
+}
+
+.btn-upgrade {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-upgrade:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn-close-prompt {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-close-prompt:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ========== 升級模態框 ========== */
+
+.upgrade-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.upgrade-modal.show {
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    text-align: center;
+    padding: 40px 30px 20px;
+}
+
+.modal-icon {
+    font-size: 64px;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.modal-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.modal-body {
+    padding: 0 30px 30px;
+}
+
+.pricing-card {
+    margin-bottom: 20px;
+}
+
+.pricing-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(96, 165, 250, 0.3);
+    border-radius: 16px;
+    padding: 25px;
+    position: relative;
+}
+
+.option-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1e1b4b;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.pricing-option h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.price {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.price-amount {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fbbf24;
+    display: block;
+}
+
+.price-label {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    margin-top: 5px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.feature-list li {
+    padding: 10px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.btn-purchase {
+    width: 100%;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+}
+
+.btn-purchase:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+}
+
+.free-tier-info {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.free-tier-info h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.free-tier-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.free-tier-info li {
+    padding: 5px 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-footer {
+    padding: 20px 30px 30px;
+    text-align: center;
+}
+
+.payment-security {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========== 成功提示 Toast ========== */
+
+.success-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.success-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+/* ========== 股票限制提示 ========== */
+
+.stock-limit-prompt {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+    border: 2px solid rgba(239, 68, 68, 0.3);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.limit-prompt-content {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.limit-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.limit-prompt-content h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ef4444;
+}
+
+.limit-prompt-content p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.limit-detail {
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.btn-upgrade-now {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.btn-upgrade-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+}
+
+/* ========== 動畫 ========== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========== 響應式調整 ========== */
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-header {
+        padding: 30px 20px 15px;
+    }
+
+    .modal-body {
+        padding: 0 20px 20px;
+    }
+
+    .modal-icon {
+        font-size: 48px;
+    }
+
+    .price-amount {
+        font-size: 36px;
+    }
+}

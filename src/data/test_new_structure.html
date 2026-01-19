@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新結構測試 - 台股記憶閃卡</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="dashboard">
+            <div class="logo">🧪 產業分類結構測試</div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCompanies">-</div>
+                    <div class="stat-label">總公司數</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalIndustries">-</div>
+                    <div class="stat-label">產業數</div>
+                </div>
+            </div>
+        </header>
+
+        <main style="padding: 40px; max-width: 1200px; margin: 0 auto;">
+            <h2 style="color: #cbd5e1; margin-bottom: 20px;">產業分布統計</h2>
+            <div id="industryList"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                <!-- 產業列表將動態生成 -->
+            </div>
+
+            <h2 style="color: #cbd5e1; margin: 40px 0 20px;">功能測試</h2>
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button onclick="testGetAllStocks()" class="btn btn-know">測試 getAllStocks()</button>
+                <button onclick="testGetByIndustry('24')" class="btn btn-know">測試取得半導體產業</button>
+                <button onclick="testGetByIndustries(['24', '25', '26'])" class="btn btn-know">測試取得多個產業</button>
+            </div>
+            <pre id="testOutput"
+                style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; color: #e2e8f0; overflow-x: auto; max-height: 400px;">
+測試結果將顯示在這裡...</pre>
+        </main>
+    </div>
+
+    <!-- 載入資料檔案 -->
+    <script src="../industry_code_mapping.js"></script>
+    <script src="../stocks_data_by_industry.js"></script>
+
+    <script>
+        // 初始化統計
+        function initStats() {
+            const stats = window.getIndustryStats();
+            document.getElementById('totalCompanies').textContent = stats.totalCompanies;
+            document.getElementById('totalIndustries').textContent = stats.totalIndustries;
+
+            // 顯示產業列表
+            const industryList = document.getElementById('industryList');
+            Object.values(stats.byIndustry)
+                .sort((a, b) => b.companyCount - a.companyCount)
+                .forEach(industry => {
+                    const card = document.createElement('div');
+                    card.style.cssText = `
+                        background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+                        border: 1px solid rgba(148, 163, 184, 0.2);
+                        border-radius: 12px;
+                        padding: 20px;
+                        transition: all 0.3s ease;
+                    `;
+                    card.innerHTML = `
+                        <div style="font-size: 14px; color: #94a3b8; marginBottom: 8px;">
+                            產業代碼: ${industry.industryCode}
+                        </div>
+                        <div style="font-size: 18px; font-weight: bold; color: #e2e8f0; marginBottom: 8px;">
+                            ${industry.industryName}
+                        </div>
+                        <div style="font-size: 24px; font-weight: bold; color: #60a5fa;">
+                            ${industry.companyCount} 家公司
+                        </div>
+                    `;
+                    card.onmouseenter = () => {
+                        card.style.transform = 'translateY(-4px)';
+                        card.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.3)';
+                    };
+                    card.onmouseleave = () => {
+                        card.style.transform = 'translateY(0)';
+                        card.style.boxShadow = 'none';
+                    };
+                    industryList.appendChild(card);
+                });
+        }
+
+        // 測試函數
+        function testGetAllStocks() {
+            const stocks = window.getAllStocks();
+            const output = document.getElementById('testOutput');
+            output.textContent = `getAllStocks() 測試結果:\n\n`;
+            output.textContent += `總計: ${stocks.length} 家公司\n\n`;
+            output.textContent += `前 10 家公司:\n`;
+            stocks.slice(0, 10).forEach((stock, idx) => {
+                output.textContent += `${idx + 1}. ${stock.id} ${stock.name} (${stock.industry})\n`;
+            });
+        }
+
+        function testGetByIndustry(code) {
+            const companies = window.getStocksByIndustry(code);
+            const industry = window.STOCKS_DATA_BY_INDUSTRY[code];
+            const output = document.getElementById('testOutput');
+            output.textContent = `getStocksByIndustry('${code}') 測試結果:\n\n`;
+            output.textContent += `產業: ${industry.industryName}\n`;
+            output.textContent += `公司數: ${companies.length}\n\n`;
+            companies.forEach((company, idx) => {
+                output.textContent += `${idx + 1}. ${company.id} ${company.name}\n`;
+            });
+        }
+
+        function testGetByIndustries(codes) {
+            const stocks = window.getStocksByIndustries(codes);
+            const output = document.getElementById('testOutput');
+            output.textContent = `getStocksByIndustries(${JSON.stringify(codes)}) 測試結果:\n\n`;
+            output.textContent += `總計: ${stocks.length} 家公司\n\n`;
+            codes.forEach(code => {
+                const industry = window.STOCKS_DATA_BY_INDUSTRY[code];
+                output.textContent += `${industry.industryName} (${code}): ${industry.companies.length} 家\n`;
+            });
+            output.textContent += `\n所有公司:\n`;
+            stocks.forEach((stock, idx) => {
+                output.textContent += `${idx + 1}. ${stock.id} ${stock.name} (${stock.industry})\n`;
+            });
+        }
+
+        // 頁面載入後初始化
+        window.addEventListener('DOMContentLoaded', initStats);
+    </script>
+</body>
+
+</html>

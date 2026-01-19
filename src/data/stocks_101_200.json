@@ -1,0 +1,786 @@
+[
+    {
+        "id": "1229",
+        "name": "聯華",
+        "industry": "食品工業",
+        "market": "上市",
+        "description": "麵粉、飼料製造",
+        "keyMetric": "台灣最大麵粉廠"
+    },
+    {
+        "id": "1319",
+        "name": "東陽",
+        "industry": "汽車工業",
+        "market": "上市",
+        "description": "汽車零組件製造",
+        "keyMetric": "台灣最大汽車零件廠"
+    },
+    {
+        "id": "1451",
+        "name": "年興",
+        "industry": "紡織纖維",
+        "market": "上市",
+        "description": "牛仔布製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "1476",
+        "name": "儒鴻",
+        "industry": "紡織纖維",
+        "market": "上市",
+        "description": "機能性布料、成衣製造",
+        "keyMetric": "Nike、Adidas 供應商"
+    },
+    {
+        "id": "1477",
+        "name": "聚陽",
+        "industry": "紡織纖維",
+        "market": "上市",
+        "description": "成衣代工",
+        "keyMetric": "Uniqlo 主要供應商"
+    },
+    {
+        "id": "1503",
+        "name": "士電",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "變壓器、電力設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "1504",
+        "name": "東元",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "馬達、家電製造",
+        "keyMetric": "台灣最大馬達廠"
+    },
+    {
+        "id": "1513",
+        "name": "中興電",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "電力設備、重電機械",
+        "keyMetric": ""
+    },
+    {
+        "id": "1519",
+        "name": "華城",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "變壓器、電力設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "1560",
+        "name": "中砂",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "研磨材料、砂輪",
+        "keyMetric": ""
+    },
+    {
+        "id": "1605",
+        "name": "華新",
+        "industry": "電線電纜",
+        "market": "上市",
+        "description": "電線電纜製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "1718",
+        "name": "中纖",
+        "industry": "紡織纖維",
+        "market": "上市",
+        "description": "聚酯纖維製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "1722",
+        "name": "台肥",
+        "industry": "化學工業",
+        "market": "上市",
+        "description": "肥料製造",
+        "keyMetric": "台灣最大肥料廠"
+    },
+    {
+        "id": "1795",
+        "name": "美時",
+        "industry": "生技醫療業",
+        "market": "上市",
+        "description": "學名藥製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "1802",
+        "name": "台玻",
+        "industry": "玻璃陶瓷",
+        "market": "上市",
+        "description": "玻璃製造",
+        "keyMetric": "台灣最大玻璃廠"
+    },
+    {
+        "id": "2006",
+        "name": "東和鋼鐵",
+        "industry": "鋼鐵工業",
+        "market": "上市",
+        "description": "鋼筋、鋼材製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "2206",
+        "name": "三陽工業",
+        "industry": "汽車工業",
+        "market": "上市",
+        "description": "機車製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "2258",
+        "name": "鴻華先進",
+        "industry": "汽車工業",
+        "market": "上市",
+        "description": "電動車研發製造",
+        "keyMetric": "鴻海電動車子公司"
+    },
+    {
+        "id": "2312",
+        "name": "金寶",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "顯示器、印表機代工",
+        "keyMetric": ""
+    },
+    {
+        "id": "2313",
+        "name": "華通",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "印刷電路板（PCB）",
+        "keyMetric": ""
+    },
+    {
+        "id": "2352",
+        "name": "佳世達",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "顯示器、醫療設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "2354",
+        "name": "鴻準",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "金屬機殼、模具",
+        "keyMetric": "鴻海集團子公司"
+    },
+    {
+        "id": "2359",
+        "name": "所羅門",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "光學元件",
+        "keyMetric": ""
+    },
+    {
+        "id": "2360",
+        "name": "致茂",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "電源測試設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "2368",
+        "name": "金像電",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "被動元件",
+        "keyMetric": ""
+    },
+    {
+        "id": "2376",
+        "name": "技嘉",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "主機板、顯示卡",
+        "keyMetric": "全球主機板前三大"
+    },
+    {
+        "id": "2385",
+        "name": "群光",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "鍵盤、滑鼠、電源供應器",
+        "keyMetric": ""
+    },
+    {
+        "id": "2404",
+        "name": "漢唐",
+        "industry": "其他",
+        "market": "上市",
+        "description": "半導體廠務工程統包",
+        "keyMetric": ""
+    },
+    {
+        "id": "2449",
+        "name": "京元電子",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "晶圓測試",
+        "keyMetric": ""
+    },
+    {
+        "id": "2478",
+        "name": "大毅",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "電感元件",
+        "keyMetric": ""
+    },
+    {
+        "id": "2540",
+        "name": "愛山林",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "建設開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "2542",
+        "name": "興富發",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "建設開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "2610",
+        "name": "華航",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "客運航空",
+        "keyMetric": "台灣最大航空公司"
+    },
+    {
+        "id": "2618",
+        "name": "長榮航",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "客運航空",
+        "keyMetric": "台灣第二大航空公司"
+    },
+    {
+        "id": "2645",
+        "name": "長榮航太",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "飛機維修",
+        "keyMetric": ""
+    },
+    {
+        "id": "2646",
+        "name": "星宇航空",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "客運航空",
+        "keyMetric": ""
+    },
+    {
+        "id": "2812",
+        "name": "台中銀",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "商業銀行",
+        "keyMetric": ""
+    },
+    {
+        "id": "2845",
+        "name": "遠東銀",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "商業銀行",
+        "keyMetric": ""
+    },
+    {
+        "id": "2915",
+        "name": "潤泰全",
+        "industry": "貿易百貨業",
+        "market": "上市",
+        "description": "百貨零售、建設",
+        "keyMetric": ""
+    },
+    {
+        "id": "3005",
+        "name": "神基",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "強固型電腦",
+        "keyMetric": "全球強固型電腦龍頭"
+    },
+    {
+        "id": "3023",
+        "name": "信邦",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "連接器、線材",
+        "keyMetric": ""
+    },
+    {
+        "id": "3036",
+        "name": "文曄",
+        "industry": "電子通路業",
+        "market": "上市",
+        "description": "IC 通路商",
+        "keyMetric": ""
+    },
+    {
+        "id": "3044",
+        "name": "健鼎",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "印刷電路板（PCB）",
+        "keyMetric": ""
+    },
+    {
+        "id": "3051",
+        "name": "力特",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "功率半導體",
+        "keyMetric": ""
+    },
+    {
+        "id": "3406",
+        "name": "玉晶光",
+        "industry": "光學業",
+        "market": "上市",
+        "description": "手機鏡頭",
+        "keyMetric": ""
+    },
+    {
+        "id": "3653",
+        "name": "健策",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "精密齒輪、傳動元件",
+        "keyMetric": ""
+    },
+    {
+        "id": "3665",
+        "name": "貿聯-KY",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "連接線組",
+        "keyMetric": ""
+    },
+    {
+        "id": "3706",
+        "name": "神達",
+        "industry": "電腦及周邊設備業",
+        "market": "上市",
+        "description": "GPS、車用電子",
+        "keyMetric": ""
+    },
+    {
+        "id": "4137",
+        "name": "麗豐-KY",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "不動產開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "4583",
+        "name": "台灣精銳",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "半導體設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "4763",
+        "name": "材料-KY",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "半導體材料",
+        "keyMetric": ""
+    },
+    {
+        "id": "4958",
+        "name": "臻鼎-KY",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "軟板（FPC）",
+        "keyMetric": "全球最大軟板廠"
+    },
+    {
+        "id": "5522",
+        "name": "遠雄",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "建設開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "6005",
+        "name": "群益證",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "證券經紀",
+        "keyMetric": ""
+    },
+    {
+        "id": "6116",
+        "name": "彩晶",
+        "industry": "光電業",
+        "market": "上市",
+        "description": "中小尺寸面板",
+        "keyMetric": ""
+    },
+    {
+        "id": "6139",
+        "name": "亞翔",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "無塵室工程",
+        "keyMetric": ""
+    },
+    {
+        "id": "6176",
+        "name": "瑞儀",
+        "industry": "光電業",
+        "market": "上市",
+        "description": "背光模組",
+        "keyMetric": "全球最大背光模組廠"
+    },
+    {
+        "id": "6285",
+        "name": "啟碁",
+        "industry": "通信網路業",
+        "market": "上市",
+        "description": "無線網路設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "6409",
+        "name": "旭隼",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "半導體測試介面",
+        "keyMetric": ""
+    },
+    {
+        "id": "6442",
+        "name": "光聖",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "半導體設備零組件",
+        "keyMetric": ""
+    },
+    {
+        "id": "6472",
+        "name": "保瑞",
+        "industry": "生技醫療業",
+        "market": "上市",
+        "description": "學名藥製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "6526",
+        "name": "達發",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "光通訊晶片",
+        "keyMetric": ""
+    },
+    {
+        "id": "6531",
+        "name": "愛普",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "記憶體模組",
+        "keyMetric": ""
+    },
+    {
+        "id": "6770",
+        "name": "力積電",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "晶圓代工、DRAM",
+        "keyMetric": ""
+    },
+    {
+        "id": "6781",
+        "name": "AES-KY",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "先進封裝",
+        "keyMetric": ""
+    },
+    {
+        "id": "6789",
+        "name": "采鈺",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "影像感測器晶片",
+        "keyMetric": "台積電轉投資"
+    },
+    {
+        "id": "6805",
+        "name": "富世達",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "半導體設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "6890",
+        "name": "來億-KY",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "連接器",
+        "keyMetric": ""
+    },
+    {
+        "id": "1434",
+        "name": "福懋",
+        "industry": "紡織纖維",
+        "market": "上市",
+        "description": "假撚加工絲",
+        "keyMetric": ""
+    },
+    {
+        "id": "1507",
+        "name": "永大",
+        "industry": "電機機械",
+        "market": "上市",
+        "description": "電梯製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "1536",
+        "name": "和大",
+        "industry": "汽車工業",
+        "market": "上市",
+        "description": "汽車齒輪、傳動系統",
+        "keyMetric": "電動車齒輪供應商"
+    },
+    {
+        "id": "1723",
+        "name": "中碳",
+        "industry": "化學工業",
+        "market": "上市",
+        "description": "碳黑、白碳黑",
+        "keyMetric": ""
+    },
+    {
+        "id": "1773",
+        "name": "勝一",
+        "industry": "化學工業",
+        "market": "上市",
+        "description": "化學原料",
+        "keyMetric": ""
+    },
+    {
+        "id": "2014",
+        "name": "中鴻",
+        "industry": "鋼鐵工業",
+        "market": "上市",
+        "description": "鋼鐵製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "2201",
+        "name": "裕隆",
+        "industry": "汽車工業",
+        "market": "上市",
+        "description": "汽車製造",
+        "keyMetric": ""
+    },
+    {
+        "id": "2231",
+        "name": "為升",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "散熱模組",
+        "keyMetric": ""
+    },
+    {
+        "id": "2328",
+        "name": "廣宇",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "建設開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "2371",
+        "name": "大同",
+        "industry": "電子業",
+        "market": "上市",
+        "description": "家電、系統整合",
+        "keyMetric": ""
+    },
+    {
+        "id": "2393",
+        "name": "億光",
+        "industry": "光電業",
+        "market": "上市",
+        "description": "LED 元件",
+        "keyMetric": ""
+    },
+    {
+        "id": "2428",
+        "name": "興勤",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "NTC 熱敏電阻",
+        "keyMetric": ""
+    },
+    {
+        "id": "2458",
+        "name": "義隆",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "觸控 IC、指紋辨識 IC",
+        "keyMetric": ""
+    },
+    {
+        "id": "2492",
+        "name": "華新科",
+        "industry": "電子零組件業",
+        "market": "上市",
+        "description": "被動元件（MLCC）",
+        "keyMetric": ""
+    },
+    {
+        "id": "2501",
+        "name": "國建",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "建設開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "2504",
+        "name": "國產",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "預拌混凝土",
+        "keyMetric": ""
+    },
+    {
+        "id": "2535",
+        "name": "達欣工",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "營造工程",
+        "keyMetric": ""
+    },
+    {
+        "id": "2607",
+        "name": "榮運",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "散裝航運",
+        "keyMetric": ""
+    },
+    {
+        "id": "2614",
+        "name": "東森",
+        "industry": "貿易百貨業",
+        "market": "上市",
+        "description": "電視購物",
+        "keyMetric": ""
+    },
+    {
+        "id": "2637",
+        "name": "慧洋-KY",
+        "industry": "航運業",
+        "market": "上市",
+        "description": "散裝航運",
+        "keyMetric": ""
+    },
+    {
+        "id": "2809",
+        "name": "京城銀",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "商業銀行",
+        "keyMetric": ""
+    },
+    {
+        "id": "2820",
+        "name": "華票",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "票券金融",
+        "keyMetric": ""
+    },
+    {
+        "id": "2867",
+        "name": "三商壽",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "人壽保險",
+        "keyMetric": ""
+    },
+    {
+        "id": "2889",
+        "name": "國票金",
+        "industry": "金融保險業",
+        "market": "上市",
+        "description": "金融控股",
+        "keyMetric": ""
+    },
+    {
+        "id": "2923",
+        "name": "鼎固-KY",
+        "industry": "建材營造",
+        "market": "上市",
+        "description": "不動產開發",
+        "keyMetric": ""
+    },
+    {
+        "id": "3006",
+        "name": "晶豪科",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "類比 IC 設計",
+        "keyMetric": ""
+    },
+    {
+        "id": "3016",
+        "name": "嘉晶",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "矽晶圓",
+        "keyMetric": ""
+    },
+    {
+        "id": "3035",
+        "name": "智原",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "ASIC 設計服務",
+        "keyMetric": ""
+    },
+    {
+        "id": "3047",
+        "name": "訊舟",
+        "industry": "通信網路業",
+        "market": "上市",
+        "description": "網路設備",
+        "keyMetric": ""
+    },
+    {
+        "id": "3094",
+        "name": "聯傑",
+        "industry": "半導體業",
+        "market": "上市",
+        "description": "IC 設計",
+        "keyMetric": ""
+    }
+]

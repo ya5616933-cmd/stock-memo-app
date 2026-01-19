@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台股資料抓取工具</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Arial', sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.02);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            min-height: 100px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .info {
+            color: #3b82f6;
+        }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 台股資料抓取工具</h1>
+        <p class="subtitle">一鍵從證交所抓取完整上市公司清單</p>
+        
+        <button id="fetchBtn" onclick="fetchStocks()">開始抓取資料</button>
+        <button id="downloadBtn" onclick="downloadJSON()" style="display:none;">下載 stocks.json</button>
+        
+        <div id="status">等待開始...</div>
+        
+        <textarea id="output" style="display:none;" readonly></textarea>
+    </div>
+
+    <script>
+        let stocksData = [];
+
+        async function fetchStocks() {
+            const btn = document.getElementById('fetchBtn');
+            const status = document.getElementById('status');
+            const output = document.getElementById('output');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            btn.disabled = true;
+            status.innerHTML = '<span class="info">正在抓取上市公司資料...</span>';
+            
+            try {
+                // 使用 proxy 服務抓取 CSV（因為瀏覽器 CORS 限制）
+                const csvUrl = 'https://mopsfin.twse.com.tw/opendata/t187ap03_L.csv';
+                
+                status.innerHTML += '\n<span class="info">連接中: ' + csvUrl + '</span>';
+                
+                const response = await fetch(csvUrl);
+                const csvText = await response.text();
+                
+                status.innerHTML += '\n<span class="success">✓ CSV 下載完成</span>';
+                status.innerHTML += '\n<span class="info">正在解析資料...</span>';
+                
+                // 解析 CSV
+                const lines = csvText.split('\n');
+                const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim());
+                
+                stocksData = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    if (!lines[i].trim()) continue;
+                    
+                    // 簡化的 CSV 解析（處理引號包裹的欄位）
+                    const matches = lines[i].match(/("([^"]*)"|[^,]+)/g);
+                    if (!matches ||matches.length < 3) continue;
+                    
+                    const values = matches.map(v => v.replace(/^"|"$/g, '').trim());
+                    
+                    // 找到關鍵欄位的索引
+                    const idIndex = headers.indexOf('公司代號');
+                    const nameIndex = headers.indexOf('公司名稱');
+                    const shortNameIndex = headers.indexOf('公司簡稱');
+                    const industryIndex = headers.indexOf('產業別');
+                    
+                    if (idIndex >= 0 && values[idIndex]) {
+                        stocksData.push({
+                            id: values[idIndex],
+                            name: values[nameIndex] || values[idIndex],
+                            shortName: values[shortNameIndex] || values[nameIndex] || values[idIndex],
+                            industry: values[industryIndex] || '上市',
+                            market: '上市',
+                            description: '',
+                            keyMetric: ''
+                        });
+                    }
+                }
+                
+                status.innerHTML += '\n<span class="success">✓ 解析完成，共 ' + stocksData.length + ' 家公司</span>';
+                
+                // 顯示 JSON
+                const jsonStr = JSON.stringify(stocksData, null, 2);
+                output.value = jsonStr;
+                output.style.display = 'block';
+                downloadBtn.style.display = 'block';
+                
+                status.innerHTML += '\n<span class="success">✓ 完成！可以下載了</span>';
+                
+            } catch (err) {
+                status.innerHTML += '\n<span class="error">✗ 錯誤: ' + err.message + '</span>';
+                status.innerHTML += '\n\n<span class="info">提示：由於瀏覽器安全限制，請直接使用已準備好的範例資料。</span>';
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        function downloadJSON() {
+            const json = JSON.stringify(stocksData, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'stocks.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
