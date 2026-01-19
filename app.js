@@ -74,6 +74,9 @@ async function init() {
             throw new Error('股票資料為空');
         }
 
+        // 確保全域變數存在，供後續使用
+        window.STOCKS_DATA = stocksData;
+
         // 加入到 SRS 系統
         srsManager.addCards(stocksData);
         srsManager.restoreProgress();
@@ -89,7 +92,8 @@ async function init() {
         alert('資料載入失敗，請確認資料檔案已正確載入');
     }
 
-    // === PRO架構整合: 顯示升級按鈕 ===
+    // === PRO架構整合: 顯示升級按鈕 (暫時停用，待相關腳本引入後啟用) ===
+    /*
     if (window.contentAccessManager && window.contentAccessManager.getUserTier() === 'free') {
         const header = document.querySelector('.dashboard');
         if (header && !document.getElementById('btnUpgrade')) {
@@ -116,6 +120,14 @@ async function init() {
             }
         }
     }
+    */
+
+    // === 開發者模式 UI (暫時停用) ===
+    /*
+    if (window.contentAccessManager && window.contentAccessManager.userPermissions.isDev) {
+        UIComponents.showDevBadge();
+    }
+    */
 
     // 綁定事件
     setupEventListeners();
@@ -147,12 +159,14 @@ function showNextCard() {
 
     // 更新卡片內容
     const stock = currentCard.data;
-    // === PRO架構整合: 檢查股票存取權限 ===
+
+    // === PRO架構整合: 檢查股票存取權限 (暫時停用) ===
+    /*
     const stockIndex = window.STOCKS_DATA.findIndex(s => s.id === stock.id);
     const accessManager = window.contentAccessManager;
 
     // 1. 檢查是否超過數量限制 (例如免費版僅限前 50 家)
-    if (!accessManager.canAccessStock(stockIndex)) {
+    if (accessManager && !accessManager.canAccessStock(stockIndex)) {
         console.log(`Stock ${stock.id} is locked by limit rule`);
         // 顯示限制提示，替代原本的卡片內容
         const limit = accessManager.getStockLimit();
@@ -164,22 +178,27 @@ function showNextCard() {
         cardWrapper.appendChild(prompt);
         return;
     } else {
-        // 確保卡片存在 (如果之前被提示取代了)
-        const cardWrapper = document.getElementById('cardWrapper');
-        if (!cardWrapper.contains(elements.flashcard)) {
-            cardWrapper.innerHTML = '';
-            cardWrapper.appendChild(elements.flashcard);
-            // 重新綁定事件，因為元素可能被移除了
-            elements.flashcard.addEventListener('click', flipCard);
-        }
+    */
+    // 確保卡片存在 (如果之前被提示取代了)
+    const cardWrapper = document.getElementById('cardWrapper');
+    if (!cardWrapper.contains(elements.flashcard)) {
+        cardWrapper.innerHTML = '';
+        cardWrapper.appendChild(elements.flashcard);
+        // 重新綁定事件，因為元素可能被移除了
+        elements.flashcard.addEventListener('click', flipCard);
     }
+    /*
+    }
+    */
 
     elements.stockCode.textContent = stock.id;
     elements.stockNameFront.textContent = stock.name;
     elements.stockName.textContent = stock.name;
+    // === PRO架構整合: 內容模糊處理 (暫時停用) ===
     elements.stockIndustry.textContent = stock.industry;
+    elements.stockDescription.textContent = stock.description || '(無描述)';
 
-    // === PRO架構整合: 內容模糊處理 ===
+    /* 待 PRO 功能腳本引入後啟用
     // 處理描述欄位
     const descContent = stock.description || '(無描述)';
     const descResult = accessManager.processContent(
@@ -202,6 +221,7 @@ function showNextCard() {
             UIComponents.showUpgradeModal();
         });
     }
+    */
 
     // 顯示量化指標 (如果有)
     if (stock.keyMetric) {

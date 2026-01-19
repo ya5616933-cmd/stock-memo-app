@@ -62,10 +62,32 @@ class ContentAccessManager {
     // ========== 用戶權限管理 ==========
 
     loadUserPermissions() {
+        // === 開發者模式檢查 ===
+        const urlParams = new URLSearchParams(window.location.search);
+        const isDevUrl = urlParams.get('dev') === 'true';
+        const isDevLocal = localStorage.getItem('dev_mode') === 'true';
+
+        if (isDevUrl || isDevLocal) {
+            console.log('🔧 開發者模式已啟用：自動獲取完整權限');
+            this.userPermissions = {
+                tier: ContentAccessManager.TIERS.PREMIUM, // 自動設為最高級別
+                purchasedDate: new Date().toISOString(),
+                expiryDate: null,
+                features: [],
+                isDev: true // 標記為開發者
+            };
+            this.saveUserPermissions();
+            return;
+        }
+
         const saved = localStorage.getItem('user_permissions');
         if (saved) {
             try {
                 this.userPermissions = JSON.parse(saved);
+                // 如果之前是開發者模式但現在條件不符，則重置
+                if (this.userPermissions.isDev && !isDevUrl && !isDevLocal) {
+                    this.setDefaultPermissions();
+                }
             } catch (e) {
                 console.error('Failed to load user permissions:', e);
                 this.setDefaultPermissions();

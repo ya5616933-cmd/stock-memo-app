@@ -31,7 +31,8 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryName": "水泥工業",
         "companies": [
             { "id": "1101", "name": "台灣水泥", "market": "上市", "description": "水泥製造與銷售，並跨足能源、環保產業", "keyMetric": "" },
-            { "id": "1102", "name": "亞洲水泥", "market": "上市", "description": "水泥生產與預拌混凝土", "keyMetric": "" }
+            { "id": "1102", "name": "亞洲水泥", "market": "上市", "description": "水泥生產與預拌混凝土", "keyMetric": "" },
+            { "id": "1103", "name": "嘉泥", "market": "上市", "description": "水泥與資產開發", "keyMetric": "轉型資產開發" }
         ]
     },
 
@@ -40,8 +41,14 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryCode": "02",
         "industryName": "食品工業",
         "companies": [
+            { "id": "1201", "name": "味全", "market": "上市", "description": "乳品、飲料、食品製造", "keyMetric": "" },
+            { "id": "1210", "name": "大成", "market": "上市", "description": "飼料、雞肉加工", "keyMetric": "台灣飼料肉品龍頭" },
+            { "id": "1215", "name": "卜蜂", "market": "上市", "description": "飼料、肉品加工", "keyMetric": "正大集團子公司" },
             { "id": "1216", "name": "統一企業", "market": "上市", "description": "食品飲料製造販售、流通事業", "keyMetric": "台灣最大食品集團" },
-            { "id": "1229", "name": "聯華", "market": "上市", "description": "麵粉、飼料製造", "keyMetric": "台灣最大麵粉廠" }
+            { "id": "1227", "name": "佳格", "market": "上市", "description": "穀物、保健食品、食用油", "keyMetric": "桂格燕麥代理" },
+            { "id": "1229", "name": "聯華", "market": "上市", "description": "麵粉、飼料製造", "keyMetric": "台灣最大麵粉廠" },
+            { "id": "1231", "name": "聯華食", "market": "上市", "description": "休閒食品（可樂果、萬歲牌）", "keyMetric": "台灣休閒食品龍頭" },
+            { "id": "1232", "name": "大統益", "market": "上市", "description": "黃豆油、沙拉油製造", "keyMetric": "台灣最大食用油廠" }
         ]
     },
 
@@ -92,7 +99,11 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryCode": "06",
         "industryName": "電器電纜",
         "companies": [
-            { "id": "1605", "name": "華新", "market": "上市", "description": "電線電纜製造", "keyMetric": "" }
+            { "id": "1605", "name": "華新", "market": "上市", "description": "電線電纜、不銹鋼製造", "keyMetric": "焦家龍頭企業" },
+            { "id": "1608", "name": "華榮", "market": "上市", "description": "電線電纜、銅線製造", "keyMetric": "" },
+            { "id": "1609", "name": "大亞", "market": "上市", "description": "電線電纜、綠能開發", "keyMetric": "能源鏈佈局完整" },
+            { "id": "1611", "name": "中電", "market": "上市", "description": "照明設備製造（東亞照明）", "keyMetric": "老牌照明大廠" },
+            { "id": "1618", "name": "合機", "market": "上市", "description": "電線電纜製造", "keyMetric": "台電強韌電網受惠" }
         ]
     },
 
@@ -108,7 +119,11 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryCode": "08",
         "industryName": "玻璃陶瓷",
         "companies": [
-            { "id": "1802", "name": "台玻", "market": "上市", "description": "玻璃製造", "keyMetric": "台灣最大玻璃廠" }
+            { "id": "1802", "name": "台玻", "market": "上市", "description": "平板玻璃、玻纖布", "keyMetric": "台灣最大玻璃廠" },
+            { "id": "1806", "name": "冠軍", "market": "上市", "description": "磁磚製造", "keyMetric": "台灣磁磚龍頭" },
+            { "id": "1809", "name": "中釉", "market": "上市", "description": "陶瓷釉料、光電材料", "keyMetric": "" },
+            { "id": "1810", "name": "和成", "market": "上市", "description": "衛浴設備（HCG）", "keyMetric": "台灣衛浴龍頭" },
+            { "id": "1817", "name": "凱撒衛", "market": "上市", "description": "衛浴設備（Caesar）", "keyMetric": "台灣衛浴大廠" }
         ]
     },
 
@@ -116,7 +131,11 @@ window.STOCKS_DATA_BY_INDUSTRY = {
     "09": {
         "industryCode": "09",
         "industryName": "造紙工業",
-        "companies": []
+        "companies": [
+            { "id": "1904", "name": "正隆", "market": "上市", "description": "工業用書、紙器包裝", "keyMetric": "台灣最大工業用紙廠" },
+            { "id": "1907", "name": "永豐餘", "market": "上市", "description": "紙類、科技、生技投資控股", "keyMetric": "轉型投資控股公司" },
+            { "id": "1909", "name": "榮成", "market": "上市", "description": "工業用紙製造", "keyMetric": "專注中國市場" }
+        ]
     },
 
     // ========== 10 - 鋼鐵工業 ==========
@@ -136,7 +155,12 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryCode": "11",
         "industryName": "橡膠工業",
         "companies": [
-            { "id": "2105", "name": "正新", "market": "上市", "description": "輪胎製造", "keyMetric": "全球第九大輪胎廠" }
+            { "id": "2101", "name": "南港", "market": "上市", "description": "輪胎製造", "keyMetric": "老牌輪胎廠" },
+            { "id": "2103", "name": "台橡", "market": "上市", "description": "合成橡膠製造", "keyMetric": "全球主要合成橡膠廠" },
+            { "id": "2104", "name": "國際中橡", "market": "上市", "description": "碳黑製造", "keyMetric": "全球知名碳黑廠" },
+            { "id": "2105", "name": "正新", "market": "上市", "description": "輪胎製造（Maxxis）", "keyMetric": "全球第九大輪胎廠" },
+            { "id": "2106", "name": "建大", "market": "上市", "description": "輪胎製造", "keyMetric": "自行車胎全球市佔高" },
+            { "id": "2108", "name": "南帝", "market": "上市", "description": "乳膠、合成橡膠", "keyMetric": "全球最大醫療手套乳膠供應商" }
         ]
     },
 
@@ -297,7 +321,11 @@ window.STOCKS_DATA_BY_INDUSTRY = {
         "industryCode": "23",
         "industryName": "油電燃氣業",
         "companies": [
-            { "id": "6505", "name": "台塑化", "market": "上市", "description": "石化產品製造", "keyMetric": "台塑四寶之一" }
+            { "id": "6505", "name": "台塑化", "market": "上市", "description": "油品、石化原料", "keyMetric": "台塑四寶之一" },
+            { "id": "6806", "name": "森崴能源", "market": "上市", "description": "再生能源開發、工程", "keyMetric": "正崴集團綠能子公司" },
+            { "id": "8926", "name": "台汽電", "market": "上市", "description": "汽電共生、獨立發電廠", "keyMetric": "台電轉投資" },
+            { "id": "9918", "name": "欣天然", "market": "上市", "description": "天然氣供應", "keyMetric": "大台北地區瓦斯公司" },
+            { "id": "9937", "name": "全國", "market": "上市", "description": "加油站通路", "keyMetric": "知名連鎖加油站" }
         ]
     },
 
@@ -439,7 +467,13 @@ window.STOCKS_DATA_BY_INDUSTRY = {
     "30": {
         "industryCode": "30",
         "industryName": "資訊服務業",
-        "companies": []
+        "companies": [
+            { "id": "2471", "name": "資通", "market": "上市", "description": "銀行系統、ERP 整合", "keyMetric": "" },
+            { "id": "3029", "name": "零壹", "market": "上市", "description": "資訊安全與網路設備代理", "keyMetric": "資安軟體代理龍頭" },
+            { "id": "4953", "name": "緯軟", "market": "上市", "description": "軟體外包服務", "keyMetric": "緯創集團子公司" },
+            { "id": "5203", "name": "訊連", "market": "上市", "description": "多媒體影音軟體、AI 人臉辨識", "keyMetric": "轉型 AI 臉部辨識" },
+            { "id": "6214", "name": "精誠", "market": "上市", "description": "資訊服務與系統整合", "keyMetric": "台灣最大資訊服務商" }
+        ]
     },
 
     // ========== 31 - 其他電子業 ==========
