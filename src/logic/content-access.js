@@ -34,12 +34,13 @@ class ContentAccessManager {
         // 免費版可存取的內容
         [ContentAccessManager.TIERS.FREE]: [
             ContentAccessManager.CONTENT_TYPES.BASIC_INFO,
-            ContentAccessManager.CONTENT_TYPES.DESCRIPTION,
+            // ContentAccessManager.CONTENT_TYPES.DESCRIPTION, // 移至付費解鎖
             ContentAccessManager.CONTENT_TYPES.KEY_METRIC
         ],
 
         // 付費版額外可存取的內容
         [ContentAccessManager.TIERS.PREMIUM]: [
+            ContentAccessManager.CONTENT_TYPES.DESCRIPTION, // 解鎖描述
             ContentAccessManager.CONTENT_TYPES.REVENUE_MIX,
             ContentAccessManager.CONTENT_TYPES.FINANCIAL_DATA
         ],

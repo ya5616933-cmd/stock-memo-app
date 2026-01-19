@@ -4,16 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台股記憶閃卡 - Stock Flashcards</title>
+    <title>台股記憶閃卡 - Stock Flashcards (產業分類版)</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="src/styles/premium.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(() => console.log('Service Worker Registered'));
+        }
+    </script>
 </head>
 
 <body>
     <div class="app-container">
         <!-- Header / Dashboard -->
         <header class="dashboard">
-            <div class="logo">📊 台股記憶閃卡</div>
+            <div class="logo">📊 台股記憶閃卡 <span style="font-size: 12px; color: #94a3b8;">(產業分類版)</span></div>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number" id="masteredCount">0</div>
@@ -81,18 +87,16 @@
 
         <!-- Footer -->
         <footer class="app-footer">
-            <p>使用間隔重複系統 (SRS) 幫助記憶 | 建立您的投資能力圈</p>
+            <p>使用間隔重複系統 (SRS) 幫助記憶 | 建立您的投資能力圈 |
+                <a href="src/data/test_new_structure.html" style="color: #60a5fa;">測試產業分類結構</a>
+            </p>
         </footer>
     </div>
 
     <!-- Scripts -->
-    <script src="src/data/stocks_data.js"></script>
-
-    <!-- Premium Features Architecture -->
-    <script src="src/data/stock-data-config.js"></script>
-    <script src="src/logic/content-access.js"></script>
-    <script src="src/logic/ui-components.js"></script>
-
+    <!-- 使用新的產業分類格式 -->
+    <script src="src/data/industry_code_mapping.js"></script>
+    <script src="src/data/stocks_data_by_industry.js"></script>
     <script src="src/logic/srs.js"></script>
     <script src="app.js"></script>
 </body>

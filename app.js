@@ -89,6 +89,34 @@ async function init() {
         alert('資料載入失敗，請確認資料檔案已正確載入');
     }
 
+    // === PRO架構整合: 顯示升級按鈕 ===
+    if (window.contentAccessManager && window.contentAccessManager.getUserTier() === 'free') {
+        const header = document.querySelector('.dashboard');
+        if (header && !document.getElementById('btnUpgrade')) {
+            const btnUpgrade = document.createElement('button');
+            btnUpgrade.id = 'btnUpgrade';
+            btnUpgrade.innerHTML = '✨ 升級完整版';
+            btnUpgrade.style.cssText = `
+                display: block;
+                margin: 10px auto;
+                background: linear-gradient(135deg, #fbbf24, #f59e0b);
+                border: none;
+                padding: 8px 16px;
+                border-radius: 20px;
+                color: #1e1b4b;
+                font-weight: bold;
+                cursor: pointer;
+                animation: pulse 2s infinite;
+            `;
+            btnUpgrade.onclick = () => UIComponents.showUpgradeModal();
+
+            const logo = header.querySelector('.logo');
+            if (logo) {
+                logo.insertAdjacentElement('afterend', btnUpgrade);
+            }
+        }
+    }
+
     // 綁定事件
     setupEventListeners();
 }
@@ -119,15 +147,67 @@ function showNextCard() {
 
     // 更新卡片內容
     const stock = currentCard.data;
+    // === PRO架構整合: 檢查股票存取權限 ===
+    const stockIndex = window.STOCKS_DATA.findIndex(s => s.id === stock.id);
+    const accessManager = window.contentAccessManager;
+
+    // 1. 檢查是否超過數量限制 (例如免費版僅限前 50 家)
+    if (!accessManager.canAccessStock(stockIndex)) {
+        console.log(`Stock ${stock.id} is locked by limit rule`);
+        // 顯示限制提示，替代原本的卡片內容
+        const limit = accessManager.getStockLimit();
+        const prompt = UIComponents.createStockLimitPrompt(stockIndex, limit);
+
+        // 清空並顯示提示
+        const cardWrapper = document.getElementById('cardWrapper');
+        cardWrapper.innerHTML = ''; // 清除舊卡片
+        cardWrapper.appendChild(prompt);
+        return;
+    } else {
+        // 確保卡片存在 (如果之前被提示取代了)
+        const cardWrapper = document.getElementById('cardWrapper');
+        if (!cardWrapper.contains(elements.flashcard)) {
+            cardWrapper.innerHTML = '';
+            cardWrapper.appendChild(elements.flashcard);
+            // 重新綁定事件，因為元素可能被移除了
+            elements.flashcard.addEventListener('click', flipCard);
+        }
+    }
+
     elements.stockCode.textContent = stock.id;
     elements.stockNameFront.textContent = stock.name;
     elements.stockName.textContent = stock.name;
     elements.stockIndustry.textContent = stock.industry;
-    elements.stockDescription.textContent = stock.description || '(無描述)';
+
+    // === PRO架構整合: 內容模糊處理 ===
+    // 處理描述欄位
+    const descContent = stock.description || '(無描述)';
+    const descResult = accessManager.processContent(
+        descContent,
+        'description', // 內容類型
+        { blurred: true } // 若無權限則模糊
+    );
+
+    // 重置描述元素以清除舊的事件監聽器
+    const newDescElement = elements.stockDescription.cloneNode(true);
+    elements.stockDescription.parentNode.replaceChild(newDescElement, elements.stockDescription);
+    elements.stockDescription = newDescElement; // 更新引用
+
+    elements.stockDescription.textContent = descResult.content;
+
+    // 應用模糊效果與互動
+    UIComponents.applyBlur(elements.stockDescription, descResult.shouldBlur);
+    if (descResult.shouldBlur) {
+        UIComponents.makeUnlockable(elements.stockDescription, () => {
+            UIComponents.showUpgradeModal();
+        });
+    }
 
     // 顯示量化指標 (如果有)
     if (stock.keyMetric) {
-        elements.stockMetric.textContent = stock.keyMetric;
+        const metricContent = stock.keyMetric;
+        // 同樣可應用權限檢查...
+        elements.stockMetric.textContent = metricContent;
         elements.stockMetric.style.display = 'block';
     } else {
         elements.stockMetric.style.display = 'none';
